@@ -48,7 +48,7 @@ namespace Metanoia.Formats._3DS.Level5
 
                 r.Seek(nameOffset);
                 var hash = r.ReadUInt32();
-                anim.Name = r.ReadString(r.Position, -1);
+                anim.Name = r.ReadString(r.Position, -1).Replace("\x002A", "STAR");
 
                 var data = Decompress.Level5Decom(r.GetSection(compDataOffset, (int)(r.Length - compDataOffset)));
 
